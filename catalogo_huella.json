@@ -1,0 +1,202 @@
+{
+  "negocio": {
+    "nombre": "Huella",
+    "instagram": "@huella_saltouy",
+    "rubro": "Placas personalizadas para mascotas (impresión 3D)",
+    "ubicacion": "Salto, Uruguay"
+  },
+  "info_general": {
+    "tiempo_fabricacion": "2 días hábiles",
+    "envio": {
+      "salto": "Envío a domicilio dentro de Salto",
+      "resto_pais": "Envío a todo el país vía DAC"
+    },
+    "formas_de_pago": [
+      "Transferencia bancaria",
+      "Efectivo"
+    ],
+    "personalizacion_estandar": "El nombre de la mascota se graba en la placa. TODAS las líneas incluyen el número de teléfono del dueño grabado detrás, sin excepción.",
+    "eleccion_de_colores": "El cliente elige el color de la placa (base) y el color del nombre/texto grabado de forma INDEPENDIENTE — pueden ser el mismo color o dos colores distintos, a elección del cliente, en cualquier línea del catálogo."
+  },
+  "lineas": [
+    {
+      "nombre": "Línea Huellitas",
+      "forma": "Huella/pata de perro",
+      "precio": 450,
+      "notas": "Diseño clásico en forma de pata."
+    },
+    {
+      "nombre": "Línea Caniches",
+      "forma": "Nube con texto 'Soy una bola de lana'",
+      "precio": 450,
+      "notas": "Pensada para perros de raza caniche/lanudos."
+    },
+    {
+      "nombre": "Oficial Canino",
+      "forma": "Escudo con estrella (estilo placa policial)",
+      "precio": 450
+    },
+    {
+      "nombre": "Línea Starter",
+      "forma": "Hueso",
+      "precio_colores_basicos": 300,
+      "precio_colores_especiales": 390,
+      "notas": "La línea más económica del catálogo."
+    },
+    {
+      "nombre": "Línea Design",
+      "forma": "Hueso con detalles decorativos (huellas, adornos)",
+      "precio_colores_basicos": 390,
+      "precio_colores_especiales": 450,
+      "notas": "Nivel intermedio, más personalidad visual que la Starter."
+    },
+    {
+      "nombre": "Línea Special Design",
+      "forma": "Hueso en acabados metálicos brillantes",
+      "precio": 450
+    },
+    {
+      "nombre": "SD Shiny Blue",
+      "forma": "Hueso en azul brillante con huellitas decorativas",
+      "precio": 450
+    },
+    {
+      "nombre": "Línea Vintage",
+      "forma": "Hueso con nombre en tipografía cursiva/manuscrita",
+      "precio_colores_basicos": 390,
+      "precio_colores_especiales": 450
+    },
+    {
+      "nombre": "Línea Night",
+      "forma": "Hueso fotoluminiscente (cambia de color de día a de noche)",
+      "precio": 390,
+      "colores_disponibles": [
+        "Verde",
+        "Celeste",
+        "Púrpura"
+      ],
+      "notas": "De día se ve blanco/color base; de noche brilla en el color elegido."
+    },
+    {
+      "nombre": "Línea Bowties",
+      "forma": "Moño/lazo",
+      "precio_colores_basicos": 390,
+      "precio_colores_especiales": 450
+    },
+    {
+      "nombre": "Cartelitos",
+      "forma": "Cartel rectangular con tornillos decorativos en las esquinas",
+      "precio": 450
+    },
+    {
+      "nombre": "Identificaciones",
+      "forma": "Carnet/credencial con ícono de perrito",
+      "precio": 450
+    },
+    {
+      "nombre": "Línea \"Hola soy\"",
+      "forma": "Rectangular, texto 'Hola, soy [nombre]'",
+      "precio": 450
+    },
+    {
+      "nombre": "Línea Food",
+      "forma": "Plato/bowl de comida para mascota",
+      "precio": 450
+    },
+    {
+      "nombre": "Línea Hearts",
+      "forma": "Corazón",
+      "precio": 350,
+      "notas": "La opción más económica junto con Starter."
+    },
+    {
+      "nombre": "Línea Special",
+      "forma": "Hueso con acabado brillante/glitter",
+      "precio": 390
+    },
+    {
+      "nombre": "Línea Super Hero",
+      "forma": "Escudo estilo superhéroe con inicial del nombre",
+      "precio": 450
+    },
+    {
+      "nombre": "Línea Dog Bones",
+      "forma": "Silueta de perrito con hueso",
+      "precio": 450
+    },
+    {
+      "nombre": "Línea Cartoon",
+      "forma": "Hueso estilo caricatura/dibujos animados",
+      "precio_colores_basicos": 390,
+      "precio_colores_especiales": 450
+    },
+    {
+      "nombre": "Línea Names",
+      "forma": "El nombre de la mascota en letras cursivas grandes, sin base geométrica",
+      "precio": 450
+    },
+    {
+      "nombre": "Salchi Tag",
+      "forma": "Hot dog / salchicha",
+      "precio": 490,
+      "notas": "La línea más cara del catálogo."
+    }
+  ],
+  "colores": {
+    "basicos": [
+      "Rojo",
+      "Azul claro",
+      "Amarillo",
+      "Verde",
+      "Naranja",
+      "Translúcido",
+      "Violeta",
+      "Blanco",
+      "Lavanda",
+      "Dorado",
+      "Bronce",
+      "Rosa",
+      "Gris plomo",
+      "Negro",
+      "Verde oliva",
+      "Blanco hueso",
+      "Chocolate",
+      "Turquesa"
+    ],
+    "especiales": [
+      "Oro y plata dual metálico",
+      "Rosa y violeta dual metálico",
+      "Cobre metálico",
+      "Azul y verde dual metálico",
+      "Rojo y oro dual metálico",
+      "Rosa metálico",
+      "Celeste con brillo",
+      "Violeta y azul dual metálico",
+      "Color madera",
+      "Rosa y oro dual metálico",
+      "Violeta, rosa y oro combinado metálico"
+    ]
+  },
+  "preguntas_frecuentes": [
+    {
+      "pregunta": "¿Cuánto tarda en estar lista mi placa?",
+      "respuesta": "2 días hábiles de fabricación."
+    },
+    {
+      "pregunta": "¿Hacen envíos?",
+      "respuesta": "Sí, a domicilio dentro de Salto, y a todo el país vía DAC."
+    },
+    {
+      "pregunta": "¿Cómo puedo pagar?",
+      "respuesta": "Por transferencia bancaria o en efectivo."
+    },
+    {
+      "pregunta": "¿Cuál es la línea más barata?",
+      "respuesta": "Línea Starter con colores básicos, a $300."
+    },
+    {
+      "pregunta": "¿Qué diferencia hay entre colores básicos y especiales?",
+      "respuesta": "Los colores especiales son acabados metálicos, dual-tono o con efectos (brillo, madera, etc.) y tienen un costo extra sobre el precio base de las líneas que distinguen entre básico/especial."
+    }
+  ]
+}

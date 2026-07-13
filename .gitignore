@@ -1,0 +1,7 @@
+.env
+pedidos_confirmados.json
+__pycache__/
+*.pyc
+.vscode/
+files.zip
+capturas de pantalla/
