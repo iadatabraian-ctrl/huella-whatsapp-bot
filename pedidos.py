@@ -148,9 +148,11 @@ def actualizar_pedido(numero: str, nueva_info: dict) -> dict:
         PEDIDOS[numero] = _pedido_vacio()
 
     pedido = PEDIDOS[numero]
+    estado_anterior = pedido["estado"]
 
     if nueva_info.get("cancela_pedido"):
         PEDIDOS[numero] = _pedido_vacio()
+        PEDIDOS[numero]["_transicion_a_confirmacion"] = False
         return PEDIDOS[numero]
 
     for campo in ["producto", "color", "cantidad", "nombre_mascota", "color_nombre",
@@ -165,6 +167,14 @@ def actualizar_pedido(numero: str, nueva_info: dict) -> dict:
         pedido["estado"] = "confirmado"
         guardar_pedido_confirmado(numero, pedido)
         PEDIDOS[numero] = _pedido_vacio()  # listo para un pedido nuevo
+        return PEDIDOS[numero]
+
+    # Marca si el pedido RECIÉN llegó a esperando_confirmacion en este mensaje,
+    # para que el resumen se muestre una sola vez y no se repita en cada
+    # mensaje siguiente mientras el cliente pregunta otra cosa.
+    pedido["_transicion_a_confirmacion"] = (
+        pedido["estado"] == "esperando_confirmacion" and estado_anterior != "esperando_confirmacion"
+    )
 
     return pedido
 
@@ -252,7 +262,12 @@ def procesar_mensaje_para_pedido(numero: str, mensaje: str, historial_reciente: 
     pedido = actualizar_pedido(numero, nueva_info)
 
     if pedido["estado"] == "esperando_confirmacion":
-        return generar_resumen_confirmacion(pedido), pedido
+        if pedido.get("_transicion_a_confirmacion"):
+            return generar_resumen_confirmacion(pedido), pedido
+        # El cliente ya vio el resumen y ahora preguntó/dijo otra cosa que no
+        # fue "sí"/"no": dejamos pasar la respuesta natural del LLM (que puede
+        # contestar su pregunta) y solo le sumamos un recordatorio corto.
+        return None, pedido
 
     if pedido["estado"] == "confirmado":
         if numero_dueno and funcion_enviar_whatsapp:
