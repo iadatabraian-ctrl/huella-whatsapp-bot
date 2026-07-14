@@ -1,5 +1,6 @@
 import os
 import json
+import time
 import requests
 from flask import Flask, request, jsonify
 from dotenv import load_dotenv
@@ -84,6 +85,12 @@ CONVERSACIONES = {}
 # para no mandar un historial infinito a la API en cada llamada.
 MAX_HISTORIAL = 20
 
+# Si un mensaje llega con más de esta antigüedad (en segundos), lo ignoramos.
+# Esto pasa cuando Meta reintenta entregar mensajes que no pudo mandar en su
+# momento (servidor caído, deploy fallando, etc.) — sin esto, el bot procesa
+# esos mensajes viejos como si fueran de ahora y manda respuestas fuera de
+# contexto, días después, confundiendo al cliente.
+ANTIGUEDAD_MAXIMA_SEGUNDOS = 5 * 60  # 5 minutos
 
 def send_whatsapp_message(to, text):
     url = f"https://graph.facebook.com/v21.0/{PHONE_NUMBER_ID}/messages"
@@ -146,10 +153,21 @@ def receive_message():
         entry = data["entry"][0]
         change = entry["changes"][0]["value"]
 
-        if "messages" in change:
+       if "messages" in change:
             message = change["messages"][0]
             sender = message["from"]
             text = message.get("text", {}).get("body", "")
+
+            # Meta manda el timestamp del mensaje en segundos (epoch, como string).
+            timestamp_mensaje = int(message.get("timestamp", time.time()))
+            antiguedad = time.time() - timestamp_mensaje
+
+            if antiguedad > ANTIGUEDAD_MAXIMA_SEGUNDOS:
+                print(
+                    f"Ignorando mensaje viejo de {sender} "
+                    f"(antigüedad: {int(antiguedad)}s): {text}"
+                )
+                return jsonify(status="ok"), 200
 
             print(f"De {sender}: {text}")
 
