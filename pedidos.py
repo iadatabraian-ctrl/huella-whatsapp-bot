@@ -112,8 +112,13 @@ envío válida. Dejá "direccion_envio" en null en ese caso — vas a necesitar 
 dirección exacta aparte, la ciudad sola no alcanza para coordinar una entrega.
 
 Otras reglas:
-- "confirma_pedido": true SOLO si el cliente está respondiendo afirmativamente a un resumen de pedido que ya se le mostró (ej: "sí", "dale", "confirmado").
-- "cancela_pedido": true si el cliente dice que quiere cancelar o cambiar de idea.
+- "confirma_pedido": true si el cliente está respondiendo de forma CLARAMENTE
+  afirmativa a un resumen de pedido que ya se le mostró — no solo "sí" literal.
+  Contá como confirmación cualquier cierre afirmativo natural: "sí", "dale",
+  "confirmado", "genial", "listo", "perfecto", "okey", "buenísimo", "todo bien",
+  combinaciones de esas ("dale perfecto"), etc.
+  Solo dejalo en false si el mensaje es una pregunta, un pedido de cambio, o
+  algo ambiguo que no cierra el tema (ej: "mmm", "no sé", "cuánto era").- "cancela_pedido": true si el cliente dice que quiere cancelar o cambiar de idea.
 - Si no hay info de pedido en el mensaje, devolvé todos los campos en null y ambos booleanos en false.
 """
 
