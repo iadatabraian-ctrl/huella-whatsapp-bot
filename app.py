@@ -92,6 +92,7 @@ MAX_HISTORIAL = 20
 # contexto, días después, confundiendo al cliente.
 ANTIGUEDAD_MAXIMA_SEGUNDOS = 5 * 60  # 5 minutos
 
+
 def send_whatsapp_message(to, text):
     url = f"https://graph.facebook.com/v21.0/{PHONE_NUMBER_ID}/messages"
     headers = {
@@ -168,31 +169,6 @@ def receive_message():
                     f"(antigüedad: {int(antiguedad)}s): {text}"
                 )
                 return jsonify(status="ok"), 200
-
-            print(f"De {sender}: {text}")
-
-            if text:
-                respuesta = get_llm_response(sender, text)
-
-                texto_pedido, pedido_actual = procesar_mensaje_para_pedido(
-                    numero=sender,
-                    mensaje=text,
-                    historial_reciente=CONVERSACIONES.get(sender, []),
-                    catalogo=CATALOGO,
-                    numero_dueno=NUMERO_DUENIO_HUELLA,
-                    funcion_enviar_whatsapp=send_whatsapp_message,
-                )
-
-                if texto_pedido:
-                    respuesta = texto_pedido
-
-                print(f"Respondiendo: {respuesta}")
-                send_whatsapp_message(sender, respuesta)
-
-    except (KeyError, IndexError) as e:
-        print("No era un mensaje de texto normal, o vino vacío:", e)
-
-    return jsonify(status="ok"), 200
 
             print(f"De {sender}: {text}")
 
